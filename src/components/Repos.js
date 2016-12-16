@@ -21,7 +21,7 @@ export class Repos extends React.Component {
         let language = '';
         let stars = '';
         let updateDate = '';
-        console.log('reposData=', reposData);
+        //console.log('reposData=', reposData);
         if (reposData) {
             repoName = reposData.name;
             description = reposData.description;

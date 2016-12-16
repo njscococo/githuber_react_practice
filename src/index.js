@@ -5,7 +5,7 @@ import { Router, Route, hashHistory, IndexRoute, browserHistory } from 'react-ro
 import { MyBgg } from './components/MyBgg';
 import { Users } from './components/Users';
 import { Games } from './components/Games';
-import { BGGContainer } from './container/index.js'
+import { BGGContainer } from './container/BGGContainer.js'
 
 
 ReactDOM.render(
