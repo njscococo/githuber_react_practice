@@ -13,8 +13,8 @@ export class Avatar extends React.Component {
             float: 'left',
             padding: 10
         }
-
-        let imgUrl = this.props.userData.avatar_url;
+        //console.log('avatar_url:', this.props);
+        let imgUrl = this.props.userData.avatar_url ;
         let imgAvatar;
         if(imgUrl){
             imgAvatar = <img src={imgUrl} style={imgStyle} className="test" />

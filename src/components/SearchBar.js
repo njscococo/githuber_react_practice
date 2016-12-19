@@ -21,23 +21,13 @@ export class SearchBar extends React.Component{
 
     getReposByOwnerName(){
         let apiurl = 'https://api.github.com/users/' + this.props.value +'/repos';
-        //let apiurl = 'http://localhost/MR/Common/GetApplNSect.asmx/CheckOrg';
-        //console.log('getReposByOwnerName:', apiurl);
         return axios.get(apiurl);
     }
 
     clickSend(){
-        // axios.all([this.getUserByName(), this.getReposByOwnerName()])
-        //     .then((res)=>{ 
-        //         console.log('res=', res);
-        //         this.props.onBtnClick(res.data);
-        //     })
-        //     .catch((err)=>{
-        //         console.error(err);
-        //     });
         axios.all([this.getReposByOwnerName(), this.getUserByName()])
             .then(axios.spread((repos, user)=>{
-                //console.log('acct:',user);
+                console.log('acct:',user);
                 //console.log('perms:',repos);
                 this.props.onBtnClick(user.data, repos.data);
             }))

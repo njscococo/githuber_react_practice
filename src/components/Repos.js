@@ -33,9 +33,9 @@ export class Repos extends React.Component {
             <span style={clearFloat}>
                 <div><span>{repoName}</span></div>
                 <div><span>{description}</span></div>
-                <span>{language}  </span>
+                <span>Language: {language}  </span>
                 <span>Stars: {stars}   </span>
-                <span>{updateDate}   </span>
+                <span>updated_at: {updateDate}   </span>
 
                 <hr style ={hrStyle}></hr>
             </span>
