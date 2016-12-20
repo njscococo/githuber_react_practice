@@ -5,8 +5,8 @@ import { Avatar } from './Avatar';
 
 export class Users extends React.Component{
     shouldComponentUpdate(nextProps, nextState){
-        console.log('nextProps', nextProps);
-        console.log('nextState:', nextState);
+        //console.log('nextProps', nextProps);
+        //console.log('nextState:', nextState);
         return true;
     }
 

@@ -7,6 +7,8 @@ import { Users } from './Users';
 import { Games } from './Games';
 import { Repos } from './Repos';
 
+import { StateContainer } from '../statesContainer/stateContainer';
+
 export class MyBgg extends React.Component {
     constructor(props) {
         super(props);
@@ -16,15 +18,21 @@ export class MyBgg extends React.Component {
         this.state ={data: Immutable.fromJS({ value: '', userData: {}, repos: [] })};
         this.handleTextInput = this.handleTextInput.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.handleBackward = this.handleBackward.bind(this);
+        this.stateHolder = [];
+        //this.stateHolder.push(this.state);
     }
 
     handleTextInput(value) {
-        console.log('handleTextInput value:', value);
+        console.log('stateHolder:',this.stateHolder);
+        //console.log('handleTextInput value:', value);
         //let newState = { value: value };
         let newState = { data: this.state.data.updateIn(['value'], val=>value) };
-        console.log('handleTextInput newState:', newState);
+        //console.log('handleTextInput newState:', newState);
         this.setState(newState);
-        console.log('handleTextInput:', this.state);
+        this.stateHolder.push(this.state);
+        
+        //console.log('handleTextInput:', this.state);
     }
 
     handleButtonClick(userData, repos) {
@@ -32,14 +40,23 @@ export class MyBgg extends React.Component {
         let newState = { data: this.state.data.merge({userData: userData, repos: repos})};
         //console.log('handleButtonClick MyBgg:', newState);
         this.setState(newState);
-        console.log('handleButtonClick MyBgg:', this.state);
-        
+        console.log('handleButtonClick MyBgg:', this.state);        
+    }
+
+    handleBackward(){
+        let newState = this.stateHolder.pop();
+        this.setState(newState);
+    }
+
+    handleForward(){
+
     }
 
     render() {
         const avatarDiv = {
             height: 300
         }
+        
 
         // const value = this.state.value;
         // const userData = this.state.userData;
@@ -59,6 +76,8 @@ export class MyBgg extends React.Component {
             <div>
                 <div style={avatarDiv}>
                     <SearchBar value={value} onChange={this.handleTextInput} onBtnClick={this.handleButtonClick} />
+                    <button onClick={this.handleBackward}> {'<-'} </button>
+                    <button onClick={this.handleForward}>{'->'}</button>
                     {res}
 
                 </div>
